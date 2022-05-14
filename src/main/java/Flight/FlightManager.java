@@ -25,4 +25,6 @@ public class FlightManager {
         double availableWeight = planeWeight/2 - totalBaggageWeight();
         return availableWeight;
     }
+
+
 }

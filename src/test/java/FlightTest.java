@@ -9,6 +9,8 @@ import org.junit.Before;
 import Plane.PlaneType;
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
@@ -19,6 +21,7 @@ public class FlightTest {
 
     private Flight flight;
     private FlightManager manager;
+    private Date time;
 
 
     @Before
@@ -32,8 +35,10 @@ public class FlightTest {
         passenger3 = new Passenger("Professor Abagail", 2);
         passenger4 = new Passenger("Buddy Holly", 2);
         plane = new Plane(PlaneType.AIRBUSA320);
+        time = new Date();
+        time.setTime(50009000);
 
-        flight = new Flight(plane, "GLA33990", "Glasgow", "Jakarta", "09:00" );
+        flight = new Flight(plane, "GLA33990", "Glasgow", "Jakarta", time);
         manager = new FlightManager(flight);
     }
 
@@ -52,7 +57,7 @@ public class FlightTest {
     }
 
     @Test
-    public void canBookassengers(){
+    public void canBookPassengers(){
         flight.bookPassenger(passenger1);
         flight.bookPassenger(passenger2);
         flight.bookPassenger(passenger3);
@@ -102,6 +107,18 @@ public class FlightTest {
         flight.bookPassenger(passenger3);
         flight.bookPassenger(passenger4);
         assertEquals(37648, manager.availableBaggageWeight(), 0.0);
+    }
+
+    @Test
+    public void canAssignFlightToPassenger(){
+        flight.bookPassenger(passenger1);
+        assertEquals("GLA33990", passenger1.getFlightNumber());
+    }
+
+    @Test
+    public void canAssignSeatNumber(){
+        flight.bookPassenger(passenger1);
+        assertEquals(true, passenger1.isSeatAssigned());
     }
 
 }

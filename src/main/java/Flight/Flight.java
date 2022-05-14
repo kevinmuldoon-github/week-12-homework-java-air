@@ -6,6 +6,8 @@ import Crew.CrewRank;
 import Crew.Pilot;
 import Plane.Plane;
 import java.util.ArrayList;
+import java.util.Date;
+
 import Passenger.Passenger;
 
 public class Flight {
@@ -17,9 +19,9 @@ public class Flight {
     private String flightNumber;
     private String destination;
     private String airport;
-    private String time;
+    private Date time;
 
-    public Flight(Plane plane, String flightNumber, String destination, String airport, String time) {
+    public Flight(Plane plane, String flightNumber, String destination, String airport, Date time) {
         this.flightPilots = new ArrayList<>();
         this.flightCrew = new ArrayList<>();
         this.flightPassengers = new ArrayList<>();
@@ -42,6 +44,14 @@ public class Flight {
         return plane;
     }
 
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public ArrayList<Passenger> getFlightPassengers() {
+        return flightPassengers;
+    }
+
     public int numberOfPilots(){
         return this.flightPilots.size();
     }
@@ -57,6 +67,7 @@ public class Flight {
     public void bookPassenger(Passenger newPassenger){
         if (numberOfRemainingSeats() > 0) {
             this.flightPassengers.add(newPassenger);
+            newPassenger.setFlight(this);
         }
     }
 
