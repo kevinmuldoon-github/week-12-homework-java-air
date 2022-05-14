@@ -1,6 +1,7 @@
 import Crew.CabinCrewMember;
 import Crew.CrewRank;
 import Crew.Pilot;
+import Passenger.Passenger;
 import org.junit.Before;
 import org.junit.Test;
 

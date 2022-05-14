@@ -1,3 +1,5 @@
+package Passenger;
+
 public class Passenger {
     private String name;
     private int numberOfBags;
