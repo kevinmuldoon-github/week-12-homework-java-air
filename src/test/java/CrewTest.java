@@ -9,15 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 public class CrewTest {
 
-    private Passenger passenger1, passenger2;
     private CabinCrewMember crew1, crew2;
     private Pilot pilot1, pilot2;
 
 
     @Before
     public void before(){
-        passenger1 = new Passenger("Kevin", 2);
-        passenger2 = new Passenger("The President", 10);
         crew1 = new CabinCrewMember("Robert", CrewRank.CABINCREW);
         crew2 = new CabinCrewMember("Sarah", CrewRank.PURSER);
         pilot1 = new Pilot("David", CrewRank.CAPTAIN, "JA12345");
